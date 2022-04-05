@@ -28,10 +28,10 @@ app.post("/api/shorturl", function (req, res) {
         oringinalUrl.split("//")[0] === "http:"
     ) {
         urls.push({ oringinalUrl, shortUrl });
+        res.json({ original_url: oringinalUrl, short_url: shortUrl });
     } else {
         res.json({ error: "invalid url" });
     }
-    res.json({ original_url: oringinalUrl, short_url: shortUrl });
 });
 
 app.get("/api/shorturl/:shortUrl", function (req, res) {
